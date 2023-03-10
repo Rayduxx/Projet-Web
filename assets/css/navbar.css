@@ -10,8 +10,17 @@
 body {
 	background: #f5f6fa;
 }
-
 .navbar {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #ffe8f9;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+	height: 60px;
+	padding: 0 20px;
+}
+/* .navbar {
 	position: fixed;
 	z-index: 9999;
 	width: 100%;
@@ -22,7 +31,7 @@ body {
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 	height: 60px;
 	padding: 0 20px;
-}
+} */
 
 .navbar-logo a {
 	display: flex;

@@ -8,7 +8,6 @@ if($userexist == 1) {
   header('Location: ./ban.php');
 }}
 ?>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -37,21 +36,18 @@ if($userexist == 1) {
       </ul>
     </div>
     <div class="navbar-buttons">
-      <a href="connection.php" class="button">Connect</a>
+      <a href="connection.php" class="button">Login</a>
     </div>
     <?php } else { ?>
       <div class="navbar-links">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Contact Us</a></li>
-        <li><a href="#"><?php echo $userinfo['nom']; ?></a></li>
+        <li><a href="profil.php"><?php echo $userinfo['nom']; ?></a></li>
       </ul>
     </div>
     <div class="navbar-buttons">
-      <a href="./logout.php" class="button">Disconnect</a>
+      <a href="./logout.php" class="button">Logout</a>
     </div>
     <?php } ?>
   </nav>
-</body>
-
-</html>

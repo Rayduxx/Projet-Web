@@ -6,15 +6,17 @@
     list-style: none;
     text-decoration: none;
 }
-
+*, ::after, ::before {
+    box-sizing: border-box;
+}
 .test {
-    height: 9999px;
+    height: 1000px;
 }
 
 .contents {
     width: 100%;
-    height: 530px;
-    background: url(../img/1.png) no-repeat center -150px fixed;
+    height: 470px;
+    background: url(../img/1.png) no-repeat center -234px fixed;
     background-size: cover;
     text-align: center;
 }
@@ -22,9 +24,9 @@
 .contents .overlay {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 60px;
     width: 100%;
-    height: 530px;
+    height: 470px;
     background: rgba(0, 0, 0, 0.53);
     color: #fff;
     display: -webkit-box;
@@ -64,6 +66,75 @@
 
 .contents .hlogo {
     position: absolute;
-    height: 32%;
+    height: 38%;
     width: 12%;
+}
+.pheader{
+    margin-top:50px;
+}
+.pheader .p-w-title{
+    text-align: center !important;
+    font-size:30px;
+}
+.prounded {
+    border-radius: 0.25rem!important;
+}
+.pjustify-content-center {
+    justify-content: center!important;
+}
+.pnavbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.pnav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.pnav-tabs {
+    border-bottom: 1px solid #e1c5de;
+}
+.pnav-tabs .pnav-link {
+    margin-bottom: -1px;
+    background: 0 0;
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.pnav-link {
+    font-size: 1em !important;
+    text-transform: upercase;
+    color: rgb(77, 71, 71);
+}
+.pnav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #000000;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.pnav-link:hover{
+    border-left: 1px solid #e1c5de;
+    border-right: 1px solid #e1c5de;
+    border-top: 1px solid #e1c5de;
+    color: #71526e;
+}
+.footer1{
+    background:#ffe8f9;
+    text-align:center;
+    padding:1rem 1rem;
+}
+.footer1 .footerh1{
+    font-size: 1.25rem;
+}
+.footer1 .footerh2{
+    padding-top:5px;
+    font-size: 14px;
 }

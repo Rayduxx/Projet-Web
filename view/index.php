@@ -11,3 +11,4 @@ include "./includes/header.php";
     </div>
     <div class="test"></div>
 </main>
+<?php include "./includes/footer.php"; ?>
