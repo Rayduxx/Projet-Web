@@ -13,7 +13,7 @@ include './includes/header.php';
         $email = htmlspecialchars($_POST['email']);
         $password = sha1($_POST['password']);
         if(!empty($email) AND !empty($password)) {
-          $requser = $bdd->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+          $requser = $bdd->prepare("SELECT * FROM users WHERE email = ? AND  password = ?");
           $requser->execute(array($email, $password));
           $userexist = $requser->rowCount();
           if($userexist == 1) {

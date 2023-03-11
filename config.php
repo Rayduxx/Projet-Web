@@ -1,4 +1,40 @@
 <?php
+
+// // connect to database
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "mindzone";
+
+// // Create connection
+// $conn = new mysqli($servername, $username, $password, $dbname);
+// // Check connection
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }
+
+// // sql to create table
+// $sql = "CREATE TABLE Users (
+// id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+// firstname VARCHAR(30) NOT NULL,
+// lastname VARCHAR(30) NOT NULL,
+// email VARCHAR(50),
+// password VARCHAR(50) NOT NULL,
+// isAdmin Int(2) NOT NULL,
+// typeCompte INT(6) NOT NULL,
+// reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+// )";
+
+
+
+// if ($conn->query($sql) === TRUE) {
+//   echo "Table MyGuests created successfully";
+// } else {
+//   echo "Error creating table: " . $conn->error;
+// }
+
+// $conn->close();
+
 session_start();
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=mindzone;charset=utf8', 'root', '');

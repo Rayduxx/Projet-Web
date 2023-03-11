@@ -34,6 +34,7 @@ if($userexist == 1) {
       <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="#">Contact Us</a></li>
+        <li><a href="#">ABOUT Us</a></li>
       </ul>
     </div>
     <div class="navbar-buttons">
