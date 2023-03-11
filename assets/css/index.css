@@ -130,6 +130,9 @@
     background:#ffe8f9;
     text-align:center;
     padding:1rem 1rem;
+    position: fixed;
+    width:100%;
+    bottom: 0;
 }
 .footer1 .footerh1{
     font-size: 1.25rem;
@@ -137,4 +140,52 @@
 .footer1 .footerh2{
     padding-top:5px;
     font-size: 14px;
+}
+.pacc{
+    margin-left:10%;
+    margin-right:10%;
+    padding-left:20px;
+}
+.pacclabel{
+    padding-right:5rem;
+    float: left;
+    padding-left:20px;
+    border-left:2px solid #fdc7ef;
+    
+}
+.pacc-detail{
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.boldtext{
+    font-weight:bold ;
+}
+.paccedit{
+    float:left;
+}
+.pacc-input{
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:3px;
+    border-radius:10px;
+    border:1px solid #db7ec3;
+    background:#db7ec312;
+}
+.btneditprofil{
+  width: 150px;
+  background-color: #f0c9ed;
+  border: none;
+  outline: none;
+  height: 37px;
+  border-radius: 49px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 50px 36;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.btneditprofil:hover
+{
+  background-color: #e5a2e0;
 }

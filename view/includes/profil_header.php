@@ -17,7 +17,7 @@ if (!isset($userinfo['id'])) {
             <li><a class="pnav-link" href="./profil.php">Profil</a></li>
             </li>
             <li class="pnav-item">
-            <li><a class="pnav-link" href="./profil.php">Edit Profil</a></li>
+            <li><a class="pnav-link" href="./profil_edit.php">Edit Profil</a></li>
             </li>
             <?php
             if ($userinfo['isAdmin'] == 1) { ?>

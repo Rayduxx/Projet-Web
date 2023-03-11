@@ -12,7 +12,7 @@ if($userexist == 1) {
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/css/navbar.css">
   <link rel="stylesheet" href="../assets/css/index.css">
@@ -41,7 +41,7 @@ if($userexist == 1) {
     <?php } else { ?>
       <div class="navbar-links">
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="#">Contact Us</a></li>
         <li><a href="profil.php"><?php echo $userinfo['nom']; ?></a></li>
       </ul>

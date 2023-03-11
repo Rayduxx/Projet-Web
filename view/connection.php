@@ -141,7 +141,6 @@ include './includes/header.php';
           Sign up
         </button>
       </div>
-      <img src="img/log.svg" class="image" alt="" />
     </div>
     <div class="panel right-panel">
       <div class="content">
@@ -153,7 +152,6 @@ include './includes/header.php';
           Sign in
         </button>
       </div>
-      <img src="img/register.svg" class="image" alt="" />
     </div>
   </div>
 </div>
