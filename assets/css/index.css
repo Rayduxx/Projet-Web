@@ -9,13 +9,11 @@
 *, ::after, ::before {
     box-sizing: border-box;
 }
-.test {
-    height: 1000px;
-}
+
 
 .contents {
     width: 100%;
-    height: 700px;
+    height: 684.5px;
     background: url(../img/1.png) no-repeat center -234px fixed;
     background-size: cover;
     text-align: center;
@@ -191,21 +189,23 @@
   background-color: #e5a2e0;
 }
 /* checkbox formulaire start */
-.contents2
+.wellbeingtabs
 {
     position: relative;
-    top: -50px;
+    top: 644.8px;
+    margin-right: 1000px;
 }
-.contents2 .wellbeingtabs button{
+.wellbeingtabs button{
     background-color: #e5a2e0;
     color: #fff;
     height:40px;
     width: 300px;
     margin-left:30px;
     border-radius: 10px  10px 0 0 ;
+    border: solid 0px;
     
 }
-.contents2 .wellbeingtabs  h2
+.wellbeingtabs  h2
 {
     display: flex;
     justify-content: center;
@@ -218,7 +218,8 @@
 .wb-contents{
     background:#e5a2e0;
     width:100%;
-    height:300px;
+    height:400px;
+   
 }
 .wb-contents .step1
 {
@@ -259,11 +260,16 @@
     height: 40px;
     border-radius: 15px;
     border: solid 3px white;
+    margin-top: 20px;
 }
 .wb-contents .btns button:hover
 {
     background-color: #e5a2e0;
     color: #fff;
     transition: 1s;
+}
+input[type="checkbox"]
+{
+    appearance: none;
 }
 /* checkbox formulaire END */
