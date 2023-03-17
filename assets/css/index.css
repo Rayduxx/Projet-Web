@@ -15,7 +15,7 @@
 
 .contents {
     width: 100%;
-    height: 470px;
+    height: 700px;
     background: url(../img/1.png) no-repeat center -234px fixed;
     background-size: cover;
     text-align: center;
@@ -190,19 +190,80 @@
 {
   background-color: #e5a2e0;
 }
-.contents2 .wellbeingtabs{
-  display:block;
-  height:60px;
-  margin-top:10px;
-  width:100%;
-  
+/* checkbox formulaire start */
+.contents2
+{
+    position: relative;
+    top: -50px;
 }
-.contents2 .wellbeingtabs .wellbeingtab{
-  height:60px;
-  padding-left:250px
+.contents2 .wellbeingtabs button{
+    background-color: #e5a2e0;
+    color: #fff;
+    height:40px;
+    width: 300px;
+    margin-left:30px;
+    border-radius: 10px  10px 0 0 ;
+    
 }
+.contents2 .wellbeingtabs  h2
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+/* .contents2 .wellbeingtabs .wellbeingtab{
+    height:60px;
+    padding-left:250px
+} */
 .wb-contents{
-  background:#ffbdf9;
-  width:100%;
-  height:300px;
+    background:#e5a2e0;
+    width:100%;
+    height:300px;
 }
+.wb-contents .step1
+{
+    padding-top: 20px;
+    color: #fff;
+    text-align: center;
+}
+.wb-contents form
+{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.wb-contents form label {
+    border: solid 3px white;
+    border-radius:10px ;
+    padding: 10px ;
+}
+.wb-contents form label:hover
+{
+    background-color:#fff;
+    transition: 1s;
+}
+.wb-contents .btns
+{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 10px;
+}
+.wb-contents .btns button
+{   
+    justify-content: center;
+    background-color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    border: solid 3px white;
+}
+.wb-contents .btns button:hover
+{
+    background-color: #e5a2e0;
+    color: #fff;
+    transition: 1s;
+}
+/* checkbox formulaire END */
