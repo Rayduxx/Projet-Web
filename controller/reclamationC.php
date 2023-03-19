@@ -1,6 +1,7 @@
 <?php 
 require "../config.php";
 require "../model/reclamationM.php";
+class ReclamC {
 //affichage reclamation
 function afficherReclamation(){
     $sql = "SELECT * FROM reclamation";
@@ -11,6 +12,19 @@ function afficherReclamation(){
     } catch (Exception $e){
       die('Erreur :'. $e->getMessage());
     }
+  }
+  //Ajout reclamation
+  function ajouterReclamation()
+  {
+    $sql="INSERT INTO reclamation (IdR,typeR,descriptionR)
+           VALUES (:Idrec,:typeRec,descriptionRec)";
+           $db = config::getConnection();
+           try{
+            $ajout=$db->query($sql);
+            return $ajout;
+           } catch (Exception $e){
+            die ('Erreur :'. $e->getMessage());
+           }
   }
   //suppression reclamation
   function supprimerReclamation($IdRec){
@@ -42,5 +56,6 @@ function modifierReclamation($IdRec)
     } catch (PDOException $e) {
         die('Erreur: '.$e->getMessage());
     }
+}
 }
 ?>
