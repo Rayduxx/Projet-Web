@@ -16,8 +16,10 @@
     height: 684.5px;
     background: url(../img/1.png) no-repeat center -234px fixed;
     background-size: cover;
-    text-align: center;
+    /* text-align: center; */
 }
+.contents h1
+{text-align: center;}
 
 .contents .overlay {
     position: absolute;
@@ -193,7 +195,11 @@
 {
     position: relative;
     top: 644.8px;
-    margin-right: 1000px;
+    /* margin-right: 1000px;     */
+}
+.wellbeingtabs button:hover
+{
+    cursor: pointer;
 }
 .wellbeingtabs button{
     background-color: #e5a2e0;
@@ -268,8 +274,8 @@
     color: #fff;
     transition: 1s;
 }
-input[type="checkbox"]
+/* input[type="checkbox"]
 {
     appearance: none;
-}
+} */
 /* checkbox formulaire END */
