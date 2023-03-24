@@ -24,7 +24,7 @@ if($userexist == 1) {
 <body>
   <nav class="navbar">
     <div class="navbar-logo">
-      <a href="#">
+      <a href="index.php">
         <img src="../assets/img/logo.png">
       </a>
     </div>
@@ -32,7 +32,7 @@ if($userexist == 1) {
     <div class="navbar-links">
       <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="contactus.php">Contact Us</a></li>
       </ul>
     </div>
     <div class="navbar-buttons">
