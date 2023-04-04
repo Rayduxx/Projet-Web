@@ -224,16 +224,16 @@
 .wb-contents{
     background:#e5a2e0;
     width:100%;
-    height:400px;
+    /* height:400px; */
    
 }
-.wb-contents .step1
+.question .step1
 {
     padding-top: 20px;
     color: #fff;
     text-align: center;
 }
-.wb-contents form
+ .wb-contents .question .formulaire
 {
     margin-top: 20px;
     display: flex;
@@ -241,22 +241,22 @@
     gap: 20px;
     flex-wrap: wrap;
 }
-.wb-contents form label {
+.wb-contents .formulaire label {
     border: solid 3px white;
     border-radius:10px ;
     padding: 10px ;
 }
-.wb-contents form label:hover
+.wb-contents .formulaire label:hover
 {
     background-color:#fff;
     transition: 1s;
 }
+
 .wb-contents .btns
 {
     display: flex;
     gap: 10px;
     justify-content: center;
-    padding-top: 10px;
 }
 .wb-contents .btns button
 {   
@@ -266,7 +266,7 @@
     height: 40px;
     border-radius: 15px;
     border: solid 3px white;
-    margin-top: 20px;
+    margin-bottom: 40px;
 }
 .wb-contents .btns button:hover
 {
@@ -279,3 +279,13 @@
     appearance: none;
 } */
 /* checkbox formulaire END */
+.question {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  }
+  
+  .question:first-child {
+    opacity: 1;
+    visibility: visible;
+  }
