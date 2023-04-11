@@ -1,61 +1,78 @@
-<?php 
-require "../config.php";
-require "../model/reclamationM.php";
-class ReclamC {
-//affichage reclamation
-function afficherReclamation(){
-    $sql = "SELECT * FROM reclamation";
-    $db = config::getConnection();
-    try{
-      $affichage = $db->query($sql);
-      return $affichage;
-    } catch (Exception $e){
-      die('Erreur :'. $e->getMessage());
-    }
-  }
-  //Ajout reclamation
-  function ajouterReclamation()
-  {
-    $sql="INSERT INTO reclamation (IdR,typeR,descriptionR)
-           VALUES (:Idrec,:typeRec,descriptionRec)";
-           $db = config::getConnection();
-           try{
-            $ajout=$db->query($sql);
-            return $ajout;
-           } catch (Exception $e){
-            die ('Erreur :'. $e->getMessage());
-           }
-  }
-  //suppression reclamation
-  function supprimerReclamation($IdRec){
-    $db = config::getConnection();
-    $sql = "DELETE FROM reclamation WHERE IdR=:IdRec";
+<?php
 
-    try {
-        $req = $db->prepare($sql);
-        $req->bindValue(':IdR', $IdRec);
-        $req->execute();
-    } catch (PDOException $e) {
-        die('Erreur: '.$e->getMessage());
+include '../config.php';
+
+class ReclamationC {
+    public function listReclamation() {
+        $bdd = config::getConnexion();
+        try{
+          
+           $liste =$bdd->query('SELECT * FROM reclamation');//query fusion de prepare,execute et fetch all
+           return $liste;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
     }
+    public function getReclamation($idR)
+    {
+        $bdd = config::getConnexion();
+        try{
+          
+           $req = $bdd->prepare('SELECT * FROM reclamation WHERE idR=:idR');
+           $req->execute([
+            'idR' => $idR
+        ]);    
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+    /*ajout*/
+   public function addReclamation($reclamation) {
+         $bdd = config::getConnexion();
+         try {
+            $req = $bdd->prepare('INSERT INTO reclamation VALUES ( :i, :t, :d)');
+            $req->execute([
+                'i' => $reclamation->getidR(),
+                't' => $reclamation->gettypeR(),
+                'd' => $reclamation->getdescriptionR(),
+               
+            ]);
+
+         } catch(Exception $e) {
+            die('Error: ' . $e->getMessage());
+         }
+    }
+    /*supp*/
+    public function DeleteReclamation($idR) {
+        $bdd = config::getConnexion();
+        try {
+           $query = $bdd->prepare('DELETE FROM reclamation where idR = :idR');
+           $query->execute([ 'idR' => $idR]);
+
+        } catch(Exception $e) {
+           die('Error: ' . $e->getMessage());
+    }  
 }
-//Modification reclamation
-function modifierReclamation($IdRec)
+/*modifier*/
+public function UpdateReclamation($idR, $reclamation)
 {
-    $conn = config::getConnexion();
-    $sql="UPDATE reclamation SET IdR=:IdRec, TypeR=:TypeR, DescriptionR=:DescriptionR   WHERE IdR=:IdRec";
-
+    $bdd= config::getConnexion();
     try {
-        $req = $db->prepare($sql);
-        $req->bindValue(':IdR', $IdRec);
-        
-        $req->bindValue(':IdR', $reclam->GetIdRec());
-        $req->bindValue(':typeR', $reclam->GettypeRec());
-        $req->bindValue(':descriptionR', $reclam->GetdescriptionRec());
-        $req->execute();
-    } catch (PDOException $e) {
-        die('Erreur: '.$e->getMessage());
-    }
+       $query = $bdd->prepare('UPDATE reclamation SET idR = :i, typeR = :t, descriptionR = :d where idR = :idR');
+       $query->execute([ 'idR' => $idR,
+            'i' => $reclamation->getidR(),
+            't' => $reclamation->gettypeR(),
+            'd' => $reclamation->getdescriptionR(),
+
+    ]);
+
+    } catch(Exception $e) {
+       die('Error: ' . $e->getMessage());
+}  
 }
+
+
 }
+
+
 ?>
