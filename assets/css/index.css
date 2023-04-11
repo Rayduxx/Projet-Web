@@ -201,7 +201,7 @@
 {
     cursor: pointer;
 }
-.wellbeingtabs button{
+.wellbeingtabs .btn-mz{
     background-color: #e5a2e0;
     color: #fff;
     height:40px;
@@ -289,3 +289,42 @@
     opacity: 1;
     visibility: visible;
   }
+/* RECENT BLOG START */
+.recentblogs
+{
+    background-color: #ed679b;
+    padding:100px;
+}
+.recentblogs h1
+{
+    color: #fff;
+    text-align: center;
+    font-size: 200%;
+}
+.blogsdiv
+{
+    display: flex;
+}
+.individualrecentblog
+{
+    width: 30%;
+    background-color: #fff;
+    height: 100%;
+    margin: 20PX;
+}
+.individualrecentblog img{
+    height: 30vh;
+    width: 100%;
+}
+.recentblogcentent
+{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+
+}
+.recentblogcentent h4 , .recentblogcentent p .recentblogcentent b
+{
+    margin-bottom: 5px;
+}
+/* RECENT BLOG END */

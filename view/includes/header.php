@@ -18,6 +18,7 @@ if($userexist == 1) {
   <link rel="stylesheet" href="../assets/css/index.css">
   <link rel="stylesheet" href="../assets/css/connection.css"/>
   <link rel="stylesheet" href="../assets/css/normalize.css"/>
+  <link rel="stylesheet" href="../assets/css/Aboutus.css"/>
   <title>Mindzone - <?php echo $page_titre;?></title>
 </head>
 
@@ -33,6 +34,8 @@ if($userexist == 1) {
       <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="#">Contact Us</a></li>
+        <li><a href="Aboutus.php">ABOUT-Us</a></li>
+        <li><a href=".php">BLOGS</a></li>
       </ul>
     </div>
     <div class="navbar-buttons">
