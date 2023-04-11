@@ -35,7 +35,7 @@ if($userexist == 1) {
         <li><a href="index.php">Home</a></li>
         <li><a href="#">Contact Us</a></li>
         <li><a href="Aboutus.php">ABOUT-Us</a></li>
-        <li><a href=".php">BLOGS</a></li>
+        <li><a href="blogs.php">BLOGS</a></li>
       </ul>
     </div>
     <div class="navbar-buttons">

@@ -8,7 +8,11 @@ class blog
     private string  $username ; 
     private date  $dateblog ; 
     
+<<<<<<< Updated upstream
     public function __construct($idb,$titre,$blogc,$username ,$dateblog,$typeblog)
+=======
+    public function __constructor ($idb=null,$titre=null,$blogc=null,$username=null ,$dateblog=null,$typeblog=null)
+>>>>>>> Stashed changes
     {
         $this->idblog =$idb ; 
         $this->titre  =$titre ; 
@@ -17,6 +21,19 @@ class blog
         $this->dateblog =$dateblog ; 
         $this->typeblog =$typeblog ; 
     }
+<<<<<<< Updated upstream
+=======
+    public function __construct(int $idb,string $titre,string $blogc,string $username ,date $dateblog,string $typeblog)
+    {
+        $this->idblog =$idb ; 
+        $this->titre  =$titre ; 
+        $this->blogcentent =$blogc ; 
+        $this->username  =$username ; 
+        $this->dateblog =$dateblog ; 
+        $this->typeblog =$typeblog ; 
+    }
+    // getters
+>>>>>>> Stashed changes
     public function GetIdBlog()
     {
        return $this->idblog;
@@ -41,6 +58,36 @@ class blog
     {
        return $this->typeblog;
     }
+<<<<<<< Updated upstream
+=======
+    // setter
+    public function setidblog(int $idblog)
+    {
+         $this->idblog=$idblog;
+    }
+    public function settitre(string $titre)
+    {
+         $this->titre=$titre;
+    }
+    public function setblogcentent(string $blogcentent)
+    {
+         $this->blogcentent=$blogcentent;
+    }
+    public function setusername(string $username)
+    {
+         $this->username=$username;
+    }
+    public function setdate(date $dateblog)
+    {
+         $this->dateblog=$dateblog;
+    }
+    public function settypeblog(string $typeblog)
+    {
+         $this->typeblog=$typeblog;
+    }
+
+    
+>>>>>>> Stashed changes
 }
 
 
