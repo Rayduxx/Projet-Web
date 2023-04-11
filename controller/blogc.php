@@ -1,34 +1,8 @@
 <?php
 require "../config.php";
-require "../model/reclamationM.php";
+require "../model/blog.php";
 class blogC
 {
-<<<<<<< Updated upstream
-    function AjouterBlog()
-    {
-      $sql="INSERT INTO blog (idblog,titre ,blogcentent,typeblog,username,dateblog)
-             VALUES (:idblog,:titre,:blogcentent,:typeblog,:username,:dateblog)";
-             $bdd = config::getConnection();
-             try{
-              $ajout=$bdd->query($sql);
-              return $ajout;
-             } catch (Exception $e){
-              die ('Erreur :'. $e->getMessage());
-             }
-    }
-    function afficherReclamation(){
-        $sql = "SELECT * FROM reclamation";
-        $db = config::getConnection();
-        try{
-          $affichage = $db->query($sql);
-          return $affichage;
-        } catch (Exception $e){
-          die('Erreur :'. $e->getMessage());
-        }
-      }
-
-
-=======
     // function AjouterBlog()
     // {
     //   $sql="INSERT INTO blog (idblog,titre ,blogcentent,typeblog,username,dateblog)
@@ -85,9 +59,8 @@ class blogC
                'blogc' => $reclamation->Getblogcentent(),
                'username' => $reclamation->Getusername(),
                'dateblog' => $reclamation->Getdate(),
-               'typeblog' => $reclamation->Gettypeblog(),
-              
-           ])
+               'typeblog' => $reclamation->Gettypeblog()   
+           ]);
         } catch(Exception $e) {
             die('Error: ' . $e->getMessage());
          }
@@ -103,7 +76,7 @@ class blogC
            die('Error: ' . $e->getMessage());
         }  
     }
->>>>>>> Stashed changes
+
 
 
 
