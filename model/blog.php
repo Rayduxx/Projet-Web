@@ -2,18 +2,20 @@
 class blog 
 {
     private int $idblog ; 
-    private string  $titre ; 
     private string  $blogcentent; 
+    private string  $titre ; 
+    private string  $typeblog ; 
     private string  $username ; 
     private date  $dateblog ; 
     
-    public function __construct($idb,$titre,$blogc,$username ,$dateblog)
+    public function __construct($idb,$titre,$blogc,$username ,$dateblog,$typeblog)
     {
         $this->idblog =$idb ; 
         $this->titre  =$titre ; 
         $this->blogcentent =$blogc ; 
         $this->username  =$username ; 
         $this->dateblog =$dateblog ; 
+        $this->typeblog =$typeblog ; 
     }
     public function GetIdBlog()
     {
@@ -35,8 +37,10 @@ class blog
     {
        return $this->dateblog;
     }
-
-
+    public function Gettypeblog()
+    {
+       return $this->typeblog;
+    }
 }
 
 
