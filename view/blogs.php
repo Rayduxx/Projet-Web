@@ -1,3 +1,8 @@
+
+<?php
+include './includes/header.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,28 +14,27 @@
     <title>BLOGS</title>
 </head>
 <body>
-    <div class="container">
+    <div class="blog-container">
         <div class="center">
             <form id="f" name="f" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post"  >
                 <div class="inputbox">
-                  <input type="text" id="Idblog" name="Idblog" required="required">
-                  <span>Id BLOG</span>
+                <input type="text" id="Idblog" name="Idblog" required="required">
+                <lAbel>ID blog</lAbel>
                 </div>
                 <div class="inputbox">
-                  <input type="text" id="username" name="username" required="required">
-                  <span>username</span>
+                <input type="text" id="username" name="username" required="required">
+                <lAbel>username</lAbel>
                 </div>
                 <div class="inputbox">
-                    
                     <textarea id="blogcentent" name="blogcentent" placeholder="blogcentent" ></textarea>
                 </div>
                 <div class="inputbox">
                   <input type="text" id="titre" name="titre" required="required">
-                  <span>titre</span>
+                  <lAbel>titre</lAbel>
                 </div>
                 <div class="inputbox">
-                  <input type="text" id="dateblog" name="dateblog" required="required">
-                  <span>DATE</span>
+                  <input type="datetime-local" id="dateblog" name="dateblog" required="required">
+                  <label>DATE</label>
                 </div>
                 <div class="inputbox">
                   <input type="text" id="typeblog" name="typeblog" required="required">
