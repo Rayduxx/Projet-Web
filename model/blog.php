@@ -1,5 +1,5 @@
 <?php
-class blog 
+class blogm
 {
     private int $idblog ; 
     private string  $blogcentent; 

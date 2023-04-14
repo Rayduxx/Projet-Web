@@ -1,8 +1,4 @@
 
-<?php
-include './includes/header.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +10,10 @@ include './includes/header.php';
     <title>BLOGS</title>
 </head>
 <body>
+
+
+
+
     <div class="blog-container">
         <div class="center">
             <form id="f" name="f" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post"  >
@@ -57,15 +57,14 @@ include './includes/header.php';
 
 
 <?php
-include '../Controller/blogC.php';
+include '../Controller/blogc.php';
 include '../Model/blog.php';
 $pc = new blogC();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
-    $r = new Reclamation($_POST['idblog'], $_POST['typeblog'], $_POST['blogcentent'], $_POST['titre'], $_POST['username'], $_POST['dateblog']);
+    $r = new blogm($_POST['idblog'], $_POST['typeblog'], $_POST['blogcentent'], $_POST['titre'], $_POST['username'], $_POST['dateblog']);
     
         $pc->addBlog($r);
        // $pc->addcrud($c);
-
-        // header('Location:ListReclamation.php');
-    }
+      }
+?>

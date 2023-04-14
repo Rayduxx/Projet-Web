@@ -41,9 +41,7 @@ class blogC
         try{
           
            $req = $bdd->prepare('SELECT * FROM BLOGS WHERE idblog=:idblog');
-           $req->execute([
-            'idblog' => $idblog
-        ]);    
+           $req->execute(['idblog' => $idblog]);    
         } catch (Exception $e) {
             die('Error: ' . $e->getMessage());
         }
@@ -59,7 +57,7 @@ class blogC
                'blogc' => $reclamation->Getblogcentent(),
                'username' => $reclamation->Getusername(),
                'dateblog' => $reclamation->Getdate(),
-               'typeblog' => $reclamation->Gettypeblog()   
+               'typeblog' => $reclamation->Gettypeblog(),   
            ]);
         } catch(Exception $e) {
             die('Error: ' . $e->getMessage());
