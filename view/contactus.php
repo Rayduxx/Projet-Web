@@ -7,11 +7,13 @@ include "./includes/header.php";
     <h6 class="h6mtt">MEET THE TEAM</h6>
     <div class="w3-content w3-display-container cont">
 
-        <div class="profileAla mySlides">
+        <div class="profilegrp mySlides">
            <div class="profileimage pbi"></div>
+            <h1>Ala Moussa</h1>
         </div>
+
         <div class="profile-slides mySlides">
-           
+        
         </div>
         
         <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"

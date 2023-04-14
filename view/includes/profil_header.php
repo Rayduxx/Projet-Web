@@ -22,7 +22,7 @@ if (!isset($userinfo['id'])) {
             <?php
             if ($userinfo['isAdmin'] == 1) { ?>
                 <li class="pnav-item">
-                <li><a class="pnav-link" href="./admin.php">Admin Dashboard</a></li>
+                <li><a class="pnav-link" href="./admind.php">Admin Dashboard</a></li>
                 </li>
             <?php } ?>
         </ul>
