@@ -44,11 +44,6 @@ li a {
     font-size:19px;
 }
 
-li a.active {
-    background-color: #ecacd5;
-    border-right: 4px solid #e59fcd;
-}
-
 li:hover {
     background-color: #f0cee4;
     border-right: 4px solid #eeb7db;
@@ -91,8 +86,9 @@ li:hover {
 }
 
 .main-content h6 {
-    margin-top: 38px;
+    margin-top: 20px;
     font-size: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 .g-cont .d-gests{
@@ -118,4 +114,13 @@ li:hover {
 .g-cont .d-gests:hover{
     border:2px solid #bc96e9;
     color:#bc96e9;
+}
+.d-active{
+    color:#7a59a2;
+}
+.g-homebt{
+  display: flex;
+  width: 35px;
+  height: 35px;
+  background:red;  
 }
