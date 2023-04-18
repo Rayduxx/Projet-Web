@@ -17,7 +17,7 @@ class blogm
         $this->dateblog =$dateblog ; 
         $this->typeblog =$typeblog ; 
     }
-    public function __construct(int $idb,string $titre,string $blogc,string $username ,date $dateblog,string $typeblog)
+      public function __construct(int $idb,string $titre,string $blogc,string $username ,date $dateblog,string $typeblog)
     {
         $this->idblog =$idb ; 
         $this->titre  =$titre ; 

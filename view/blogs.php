@@ -1,4 +1,7 @@
-
+<?php
+$page_titre = "Connection";
+include './includes/header.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +19,7 @@
 
     <div class="blog-container">
         <div class="center">
+        <a href="./listeblogs.php">Back to list </a>
             <form id="f" name="f" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post"  >
                 <div class="inputbox">
                 <input type="text" id="Idblog" name="Idblog" required="required">
@@ -57,12 +61,12 @@
 
 
 <?php
-include '../Controller/blogc.php';
-include '../Model/blog.php';
+require_once '../Controller/blogc.php';
+require_once '../Model/blog.php';
 $pc = new blogC();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
-    $r = new blogm($_POST['idblog'], $_POST['typeblog'], $_POST['blogcentent'], $_POST['titre'], $_POST['username'], $_POST['dateblog']);
+    $r = new blogm($_POST['Idblog'], $_POST['typeblog'], $_POST['blogcentent'], $_POST['titre'], $_POST['username'], $_POST['dateblog']);
     
         $pc->addBlog($r);
        // $pc->addcrud($c);

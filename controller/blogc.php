@@ -1,92 +1,98 @@
 <?php
-require "../config.php";
-require "../model/blog.php";
-class blogC
+require_once '../config.php';
+require_once '../Model/blog.php';
+class blogc
 {
-    // function AjouterBlog()
-    // {
-    //   $sql="INSERT INTO blog (idblog,titre ,blogcentent,typeblog,username,dateblog)
-    //          VALUES (:idblog,:titre,:blogcentent,:typeblog,:username,:dateblog)";
-    //          $bdd = config::getConnection();
-    //          try{
-    //           $ajout=$bdd->query($sql);
-    //           return $ajout;
-    //          } catch (Exception $e){
-    //           die ('Erreur :'. $e->getMessage());
-    //          }
-    // }
-    // function afficherReclamation(){
-    //     $sql = "SELECT * FROM reclamation";
-    //     $db = config::getConnection();
-    //     try{
-    //       $affichage = $db->query($sql);
-    //       return $affichage;
-    //     } catch (Exception $e){
-    //       die('Erreur :'. $e->getMessage());
-    //     }
-    //   }
-      public function listBlog() {
-        $bdd = config::getConnexion();
-        try{
-          
-           $liste =$bdd->query('SELECT * FROM BLOGS');//query fusion de prepare,execute et fetch all
-           return $liste;
-        } catch (Exception $e) {
-            die('Error: ' . $e->getMessage());
-        }
-    }
-    public function getBlogs($idblog)
+    function listblog()
     {
-        $bdd = config::getConnexion();
-        try{
-          
-           $req = $bdd->prepare('SELECT * FROM BLOGS WHERE idblog=:idblog');
-           $req->execute(['idblog' => $idblog]);    
-        } catch (Exception $e) {
-            die('Error: ' . $e->getMessage());
-        }
-    }
-                            // ADDBLOG \\
-    public function addBlog($blog) {
-        $bdd = config::getConnexion();
+        $sql = "SELECT * FROM blogs";
+        $bdd = config::getConnection();
         try {
-           $req = $bdd->prepare('INSERT INTO BLOGS VALUES ( :idb, :titre, :blogc,:username,:dateblog,:typeblog)');
-           $req->execute([
-               'idb' => $reclamation->GetIdBlog(),
-               'titre' => $reclamation->Gettitre(),
-               'blogc' => $reclamation->Getblogcentent(),
-               'username' => $reclamation->Getusername(),
-               'dateblog' => $reclamation->Getdate(),
-               'typeblog' => $reclamation->Gettypeblog(),   
-           ]);
-        } catch(Exception $e) {
-            die('Error: ' . $e->getMessage());
-         }
+			$liste = $bdd->query($sql);
+			return $liste;
+		}catch (Exception $e) {
+			die('Erreur:' . $e->getMessage());
+		}
     }
-                                // SUPPBLOGS\\
-    public function DeleteBlog($idblog) {
-      $bdd = config::getConnexion();
+    function deleteblog($id)
+    {
+        $sql = "DELETE FROM blogs WHERE id=:idblog";  
+        $db = config::getConnexion();
+        $req = $db->prepare($sql);
+        $req->bindValue(':idblog', $idblog);
         try {
-           $query = $bdd->prepare('DELETE FROM BLOGS where idblog = :idblog');
-           $query->execute([ 'idblog' => $idblog]);
+			$req->execute();
+		} catch (Exception $e) {
+			die('Erreur:' . $e->getMessage());
+		}
 
-        } catch(Exception $e) {
-           die('Error: ' . $e->getMessage());
-        }  
     }
+    function addblog($blog)
+	{
+		$sql = "INSERT INTO blogs (idblog,blogcentent, titre, typeblog, username , dateblog) 
+			VALUES (:idblog, :blogcentent, :titre, :typeblog, :username, :dateblog )";
+		$db = config::getConnexion();
+		try {
+            $query = $db->prepare($sql);
+			$query->execute([
+				'idblog' => $blog->GetIdBlog(),
+				'titre' => $blog->Gettitre(),
+				'blogcentent' => $blog->Getblogcentent(),
+				'username' => $blog-> Getusername(),
+				'dateblog' => $blog->Getdate(),
+                'typeblog' => $blog->Gettypeblog()
+			]);
+		} catch (Exception $e) {
+			echo 'Erreur: ' . $e->getMessage();
+		}
+    
+	}
+    function recupererblog($id)
+	{
+		$sql = "SELECT * from blogs where idblog=$id";
+		$db = config::getConnexion();
+		try {
+			$query = $db->prepare($sql);
+			$query->execute();
 
-
+			$paiement = $query->fetch();
+			return $paiement;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
+		}
 
 
 }
 
+function updateblog($blog, $id)
+{
+    try {
+        $db = config::getConnexion();
+        $query = $db->prepare(
+            'UPDATE blogs SET 
+                   dateblog= :dateblog, 
+                    blogcentent= :blogcentent, 
+                    titre= :titre, 
+                    typeblog= :typeblog, 
+                    username = :username 
+                WHERE id= :idblog'
+        );
+        $query->execute([
+            'idblog' => $blog->GetIdBlog(),
+            'titre' => $blog->Gettitre(),
+            'blogcentent' => $blog->Getblogcentent(),
+            'username' => $blog-> Getusername(),
+            'dateblog' => $blog->Getdate(),
+            'typeblog' => $blog->Gettypeblog()
+        ]);
+        echo $query->rowCount() . " records UPDATED successfully <br>";
+    } catch (PDOException $e) {
+        $e->getMessage();
+    
+    }
 
 
+}
 
-
-
-
-
-
-
+}
 ?>
