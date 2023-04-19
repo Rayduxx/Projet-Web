@@ -1,3 +1,6 @@
+<?php
+require("../../../config.php");
+?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
     data-template="vertical-menu-template-free">
@@ -46,7 +49,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a href="dashboard.html" class="menu-link">
+                        <a href="dashboard.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
@@ -56,31 +59,31 @@
                         <span class="menu-header-text">Gestions</span>
                     </li>
                     <li class="menu-item">
-                        <a href="d-g-users.html" class="menu-link">
+                        <a href="d-g-users.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-user"></i>
                             <div data-i18n="Basic">Users</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
-                        <a href="d-g-resv.html" class="menu-link">
+                    <li class="menu-item">
+                        <a href="d-g-resv.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-calendar"></i>
                             <div data-i18n="Basic">Reservations</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="d-g-recla.html" class="menu-link">
+                        <a href="d-g-recla.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-box"></i>
                             <div data-i18n="Basic">Reclamations</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="d-g-blogs.html" class="menu-link">
+                    <li class="menu-item active">
+                        <a href="d-g-blogs.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bxl-blogger"></i>
                             <div data-i18n="Basic">Blogs</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="d-g-opin.html" class="menu-link">
+                        <a href="d-g-opin.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-like"></i>
                             <div data-i18n="Basic">Opinions</div>
                         </a>
@@ -142,7 +145,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
+                                                    <span class="fw-semibold d-block">
+                                                        <?php echo $userinfo['nom'] . ' ' . $userinfo['prenom']; ?>
+                                                    </span>
                                                     <small class="text-muted">Admin</small>
                                                 </div>
                                             </div>
@@ -172,14 +177,11 @@
                         </ul>
                     </div>
                 </nav>
-
-                <!-- / Navbar -->
-
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Reservations</h4>
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Blogs</h4>
                         
                     </div>
                     <!-- / Content -->
