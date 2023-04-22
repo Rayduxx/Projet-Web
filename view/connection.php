@@ -31,6 +31,12 @@ include './includes/header.php';
       ?>
       <form method="POST" class="sign-in-form">
         <h2 class="title">Sign in</h2>
+        <?php if(isset($erreur)) {
+						echo '<div><div class="alert alert-danger" role="alert"> Une erreur est survenu lors de votre inscription :' .$erreur.'</div></div>';
+					}?>
+					<?php if(isset($success)) {
+						echo '<div><div class="alert alert-success" role="alert">' .$success.'<a href="./index.php"> Connectez vous</a></div></div>';
+					}?>
         <div class="input-field">
           <i class="fas fa-user"></i>
           <input type="email" id="email" name="email" placeholder="Email" required />
@@ -95,6 +101,12 @@ include './includes/header.php';
       </form>
       <form method="POST" class="sign-up-form">
         <h2 class="title">Sign up</h2>
+        <?php if(isset($erreur)) {
+						echo '<div><div role="alert"> Une erreur est survenu lors de votre inscription :' .$erreur.'</div></div>';
+					}?>
+					<?php if(isset($success)) {
+						echo '<div><div role="alert">' .$success.'<a href="./connection.php"> Connectez vous</a></div></div>';
+					}?>
         <div class="input-field nameinput">
           <i class="fas fa-user"></i>
           <input type="text" id="name1" name="name1" placeholder="Name" required />
