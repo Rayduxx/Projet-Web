@@ -110,4 +110,21 @@
 .layout-demo-info {
   text-align: center;
   margin-top: 1rem;
+
+}
+/* BLOG */
+
+.content-wrapper .blognav ul
+{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-left: 20%;
+}
+.content-wrapper .blognav .blogli 
+{
+  color: black;
+  margin-left: 50PX;
+  padding: 0 50px;
+  list-style: none;
 }

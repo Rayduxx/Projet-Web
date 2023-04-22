@@ -2,19 +2,10 @@
 $page_titre = "Connection";
 include './includes/header.php';
 ?>
-
 <?php
 require_once '../Controller/blogc.php';
-
-
-$blog=new blogc();
-
- 
-    
+$blog=new blogc();  
 $liste=$blog->listblog() ;
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

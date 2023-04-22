@@ -6,7 +6,6 @@ class blogc
     function listblog()
     {
         $sql = "SELECT * FROM blogs";
-        $bdd = config::getConnection();
         try {
 			$liste = $bdd->query($sql);
 			return $liste;
