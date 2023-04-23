@@ -1,7 +1,8 @@
 <?php
-$page_titre = "Connection";
+$page_titre = "blogs";
 include './includes/header.php';
 require_once '../config.php'
+
 ?>
 <?php
 $user_id = $_SESSION['id'];
@@ -11,148 +12,71 @@ if(!isset($user_id))
    header('location:connection.php ');
 }
 
-if(isset($_POST['publish'])){
-
-  $name = $_POST['name'];
-  $name = filter_var($name, FILTER_SANITIZE_STRING);
-  $title = $_POST['title'];
-  $title = filter_var($title, FILTER_SANITIZE_STRING);
-  $content = $_POST['content'];
-  $content = filter_var($content, FILTER_SANITIZE_STRING);
-  $category = $_POST['category'];
-  $category = filter_var($category, FILTER_SANITIZE_STRING);
-  $status = 'active';
-  
-  $image = $_FILES['image']['name'];
-  $image = filter_var($image, FILTER_SANITIZE_STRING);
-  $image_size = $_FILES['image']['size'];
-  $image_tmp_name = $_FILES['image']['tmp_name'];
-  $image_folder = '../view/uploaded_img'.$image;
-
-  $select_image = $bdd->prepare("SELECT * FROM `posts` WHERE image = ? AND user_id = ?");
-  $select_image->execute([$image ,$user_id]);
-
-  if(isset($image)){
-     if($select_image->rowCount() > 0 AND $image != ''){
-        $message[] = 'image name repeated!';
-     }elseif($image_size > 2000000){
-        $message[] = 'images size is too large!';
-     }else{
-        move_uploaded_file($image_tmp_name, $image_folder);
-     }
-  }else{
-     $image = '';
-  }
-
-  if($select_image->rowCount() > 0 AND $image != ''){
-     $message[] = 'please rename your image!';
-  }else{
-     $insert_post = $bdd->prepare("INSERT INTO `posts`(user_id, name, title, content, category, image, status) VALUES(?,?,?,?,?,?,?)");
-     $insert_post->execute([$user_id, $name, $title, $content, $category, $image, $status]);
-     $message[] = 'post published!';
-  }
-  
-}
-
-if(isset($_POST['draft'])){
-
-  $name = $_POST['name'];
-  $name = filter_var($name, FILTER_SANITIZE_STRING);
-  $title = $_POST['title'];
-  $title = filter_var($title, FILTER_SANITIZE_STRING);
-  $content = $_POST['content'];
-  $content = filter_var($content, FILTER_SANITIZE_STRING);
-  $category = $_POST['category'];
-  $category = filter_var($category, FILTER_SANITIZE_STRING);
-  $status = 'deactive';
-  
-  $image = $_FILES['image']['name'];
-  $image = filter_var($image, FILTER_SANITIZE_STRING);
-  $image_size = $_FILES['image']['size'];
-  $image_tmp_name = $_FILES['image']['tmp_name'];
-  $image_folder = '../uploaded_img/'.$image;
-
-  $select_image = $conn->prepare("SELECT * FROM `posts` WHERE image = ? AND user_id = ?");
-  $select_image->execute([$image, $user_id]); 
-
-  if(isset($image)){
-     if($select_image->rowCount() > 0 AND $image != ''){
-        $message[] = 'image name repeated!';
-     }elseif($image_size > 2000000){
-        $message[] = 'images size is too large!';
-     }else{
-        move_uploaded_file($image_tmp_name, $image_folder);
-     }
-  }else{
-     $image = '';
-  }
-
-  if($select_image->rowCount() > 0 AND $image != ''){
-     $message[] = 'please rename your image!';
-  }else{
-     $insert_post = $conn->prepare("INSERT INTO `posts`(user_id, name, title, content, category, image, status) VALUES(?,?,?,?,?,?,?)");
-     $insert_post->execute([$user_id, $name, $title, $content, $category, $image, $status]);
-     $message[] = 'draft saved!';
-  }
-
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/blogs.css">
-    
-    <title>BLOGS</title>
 </head>
 <body>
-<section class="post-editor">
+<div class="navbar-blog">
+      <ul>
+        <li><a href="BLOGS.php">VIEW POSTS </a></li>
+        <li><a href="./ADD-BLOGS.php">ADD POSTS</a></li>
+      </ul>
+    </div>
+    <section class="show-posts">
 
-<h1 class="heading">ADD NEW POST</h1>
+   <h1 class="heading">your posts</h1>
 
-<form action="" method="post" enctype="multipart/form-data">
-   <input type="hidden" name="name" value="<?= $fetch_profile['name']; ?>">
-   <p>post title <span>*</span></p>
-   <input type="text" name="title" maxlength="100" required placeholder="add post title" class="box">
-   <p>post content <span>*</span></p>
-   <textarea name="content" class="box" required maxlength="10000" placeholder="write your content..." cols="30" rows="10"></textarea>
-   <p>post category <span>*</span></p>
-   <select name="category" class="box" required>
-      <option value="" selected disabled>-- select category* </option>
-      <option value="nature">nature</option>
-      <option value="education">education</option>
-      <option value="pets and animals">pets and animals</option>
-      <option value="technology">technology</option>
-      <option value="fashion">fashion</option>
-      <option value="entertainment">entertainment</option>
-      <option value="movies and animations">movies</option>
-      <option value="gaming">gaming</option>
-      <option value="music">music</option>
-      <option value="sports">sports</option>
-      <option value="news">news</option>
-      <option value="travel">travel</option>
-      <option value="comedy">comedy</option>
-      <option value="design and development">design and development</option>
-      <option value="food and drinks">food and drinks</option>
-      <option value="lifestyle">lifestyle</option>
-      <option value="personal">personal</option>
-      <option value="health and fitness">health and fitness</option>
-      <option value="business">business</option>
-      <option value="shopping">shopping</option>
-      <option value="animations">animations</option>
-   </select>
-   <p>post image</p>
-   <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp">
-   <div class="flex-btn">
-      <input type="submit" value="publish post" name="publish" class="btn">
-      <input type="submit" value="save draft" name="draft" class="btn">
+   <div class="box-container">
+
+      <?php
+         $select_posts = $bdd->prepare("SELECT * FROM `posts` WHERE user_id = ?");
+         $select_posts->execute([$user_id]);
+         if($select_posts->rowCount() > 0){
+            while($fetch_posts = $select_posts->fetch(PDO::FETCH_ASSOC)){
+               $post_id = $fetch_posts['id'];
+
+            //    $count_post_comments = $conn->prepare("SELECT * FROM `comments` WHERE post_id = ?");
+            //    $count_post_comments->execute([$post_id]);
+            //    $total_post_comments = $count_post_comments->rowCount();
+
+            //    $count_post_likes = $conn->prepare("SELECT * FROM `likes` WHERE post_id = ?");
+            //    $count_post_likes->execute([$post_id]);
+            //    $total_post_likes = $count_post_likes->rowCount();
+
+      ?>
+      <form method="post" class="box">
+         <input type="hidden" name="post_id" value="<?= $post_id; ?>">
+         <?php if($fetch_posts['image'] != ''){ ?>
+            <img src="./uploaded_img<?= $fetch_posts['image']; ?>" class="image" alt="">
+         <?php } ?>
+         <div class="status" style="background-color:<?php if($fetch_posts['status'] == 'active'){echo 'limegreen'; }else{echo 'coral';}; ?>;"><?= $fetch_posts['status']; ?></div>
+            <div class="title"><?= $fetch_posts['title']; ?></div>
+         <div class="posts-content"><?= $fetch_posts['content']; ?></div>
+         <div class="icons">
+            <!-- <div class="likes"><i class="fas fa-heart"></i><span><?= $total_post_likes; ?></span></div>
+            <div class="comments"><i class="fas fa-comment"></i><span><?= $total_post_comments; ?></span></div> -->
+         </div>
+         <div class="flex-btn">
+            <a href="edit_post.php?id=<?= $post_id; ?>" class="option-btn">edit</a>
+            <button type="submit" name="delete" class="delete-btn" onclick="return confirm('delete this post?');">delete</button>
+         </div>
+         <a href="read_post.php?post_id=<?= $post_id; ?>" class="btn">view post</a>
+      </form>
+      <?php
+            }
+         }else{
+            echo '<p class="empty">no posts added yet! <a href="add_posts.php" class="btn" style="margin-top:1.5rem;">add post</a></p>';
+         }
+      ?>
+
    </div>
-</form>
+
 
 </section>
-    <!-- <script src="../assets/js/reclamation.js"></script> -->
 </body>
 </html>

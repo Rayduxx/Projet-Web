@@ -50,7 +50,7 @@ if (isset($userinfo['email'])) {
           <li><a href="index.php">Home</a></li>
           <li><a href="contactus.php">Contact Us</a></li>
           <li><a href="Aboutus.php">ABOUT-Us</a></li>
-        <li><a href="blogs.php">BLOGS</a></li>
+        <li><a href="BLOGS.php">BLOGS</a></li>
           <li><a href="profil.php">
               <?php echo $userinfo['nom']; ?>
             </a></li>
