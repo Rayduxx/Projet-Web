@@ -119,8 +119,13 @@ require("../../../config.php");
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item d-flex align-items-center">
                                 <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search..." />
+                                <?php 
+                                
+                                ?>
+                                <form method="POST">
+                                    <input type="text" class="form-control border-0 shadow-none" name="searchid" placeholder="Search..."
+                                        aria-label="Search..." />
+                                </form>
                             </div>
                         </div>
                         <!-- /Search -->
@@ -186,196 +191,160 @@ require("../../../config.php");
                             <div class="card">
                                 <h5 class="card-header">Users List</h5>
                                 <div class="table-responsive text-nowrap">
-                                    <table class="table table-hover">
+                                    <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Prename</th>
-                                                <th>Email</th>
-                                                <th>Admin</th>
-                                                <th>Account</th>
-                                                <th>Created</th>
-                                                <th>Actions</th>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Prename</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Admin</th>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Created</th>
+                                                <th scope="col">Actions</th>
                                             </tr>
-                                        </thead>
-                                        <tbody class="table-border-bottom-0">
+                                        <tbody>
                                             <?php
                                             $SelectionUser = $bdd->prepare("SELECT * FROM users ORDER BY id");
                                             $SelectionUser->execute();
 
                                             while ($user = $SelectionUser->fetch()) {
                                                 ?>
-                                                <td>
-                                                    <?php echo $user['id']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $user['nom']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $user['prenom']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $user['email']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php if ($user['isAdmin'] == 1) {
-                                                        echo "Yes";
-                                                    } else {
-                                                        echo "No";
-                                                    } ?>
-                                                </td>
-                                                <td>
-                                                    <?php if ($user['typeCompte'] == 1) {
-                                                        echo "Agent Entretient";
-                                                    } else {
-                                                        echo "User";
-                                                    } ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $user['datecreation']; ?>
-                                                </td>
-                                                <td>
-                                                    <a type="button" data-bs-toggle="modal"
-                                                        href="./d-g-users.php#?editMode=1&editid=<?php echo $user['id']; ?>"
-                                                        data-bs-target="#basicModal" class="btn btn-icon btn-primary">
-                                                        <span class="tf-icons bx bx-edit-alt"></span>
-                                                    </a>
-                                                    <button type="button" class="btn btn-icon btn-primary">
-                                                        <span class="tf-icons bx bx-x"></span>
-                                                    </button>
-                                                </td>
-                                            </tbody>
-                                        <?php } ?>
-                                        <div class="modal fade" id="basicModal" tabindex="-1" style="display: none;" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel1">Edit User</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                    <?php
-                                                    if (isset($_GET['editMode']) && !empty($_GET['editMode']) && isset($_GET['editid']) && !empty($_GET['editid'])) {
-                                                        if ($_GET['editid'] == $user['id']) {
-                                                            if (isset($_POST['FormEdit'])) {
-                                                                if (!empty($_POST['email']) && !empty($_POST['nom']) && !empty($_POST['prenom'])) {
-                                                                    $email = htmlspecialchars($_POST['email']);
-                                                                    $nom = htmlspecialchars($_POST['nom']);
-                                                                    $prenom = htmlspecialchars($_POST['prenom']);
-                                                                    $isAdmin = htmlspecialchars($_POST['isAdmin']);
-                                                                    $typeCompte = htmlspecialchars($_POST['typeCompte']);
-        
-                                                                    $update = $bdd->prepare('UPDATE users SET nom = ?, prenom = ?, email = ?, isAdmin = ?, typeCompte = ? WHERE id = ?');
-                                                                    $update->execute(array($nom, $prenom, $email, $isAdmin, $typeCompte, $user['id']));
-                                                                    echo "<script>location.href = './users.php'</script>";
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $user['id']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $user['nom']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $user['prenom']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $user['email']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($user['isAdmin'] == 1) {
+                                                            echo "Yes";
+                                                        } else {
+                                                            echo "No";
+                                                        } ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($user['typeCompte'] == 1) {
+                                                            echo "Agent Entretient";
+                                                        } else {
+                                                            echo "User";
+                                                        } ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $user['datecreation']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <a type="button" class="btn btn-icon btn-outline-primary"
+                                                            href="./d-g-users.php?editMode=1&editid=<?php echo $user['id']; ?>">
+                                                            <span class="tf-icons bx bx-edit-alt"></span></a>
+                                                        
+                                                        <a class="btn btn-icon btn-outline-primary"
+                                                            href="./d-g-users.php?delteMode=1&deleteid=<?php echo $user['id']; ?>">
+                                                            <span class="tf-icons bx bx-x"></span></a>
+                                                            <?php
+                                                            if (isset($_GET['delteMode']) && !empty($_GET['delteMode']) && isset($_GET['deleteid']) && !empty($_GET['deleteid'])) {
+                                                                if ($_GET['deleteid'] == $user['id']) {
+                                                                    $query = $bdd->prepare('DELETE FROM users WHERE id = ?');
+                                                                    $query->execute(array($user['id']));
                                                                 }
                                                             }
-                                                            ?>
-                                                            
-                                                                <form method="POST">
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label"
-                                                                            for="basic-default-fullname">ID</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="basic-default-fullname"
-                                                                            name="id"
-                                                                            placeholder="<?php echo $user['id']; ?>">
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label"
-                                                                            for="basic-default-company">Name</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="basic-default-company"
-                                                                            name="nom"
-                                                                            placeholder="<?php echo $user['nom']; ?>">
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label"
-                                                                            for="basic-default-company">Prename</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="basic-default-company"
-                                                                            name="prenom"
-                                                                            placeholder="<?php echo $user['prenom']; ?>">
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label"
-                                                                            for="basic-default-email">Email</label>
-                                                                        <div class="input-group input-group-merge">
-                                                                            <input type="text" id="basic-default-email"
-                                                                                class="form-control"
-                                                                                name="email"
-                                                                                placeholder="<?php echo $user['email']; ?>"
-                                                                                aria-describedby="basic-default-email2">
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label"
-                                                                                for="basic-default-phone">Admin</label>
-                                                                            <select class="form-select" id="inputGroupSelect04"
-                                                                            name="isAdmin"
-                                                                                aria-label="Example select with button addon"
-                                                                                placeholder="<?php echo $user['isAdmin']; ?>">
-                                                                                <option value="1" <?php if ($user['isAdmin'] == 1) { ?>selected<?php } ?>>Yes</option>
-                                                                                <option value="0" <?php if ($user['isAdmin'] == 0) { ?>selected<?php } ?>>No</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="mb-3">
-                                                                            <label class="form-label"
-                                                                                for="basic-default-phone">Account
-                                                                                Type</label>
-                                                                            <select class="form-select" id="inputGroupSelect04"
-                                                                                aria-label="Example select with button addon"
-                                                                                name="typeCompte"
-                                                                                placeholder="<?php echo $user['typeCompte']; ?>">
-                                                                                <option value="1" <?php if ($user['typeCompte'] == 1) { ?>selected<?php } ?>>Agent Entretient</option>
-                                                                                <option value="0" <?php if ($user['typeCompte'] == 0) { ?>selected<?php } ?>>User</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <button type="submit" name="FormEdit"
-                                                                            class="btn btn-primary">Edit</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php }} ?>
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                                <?php if (isset($_GET['editMode']) && !empty($_GET['editMode']) && isset($_GET['editid']) && !empty($_GET['editid'])) {
+                                                    if ($_GET['editid'] == $user['id']) {
+                                                        if (isset($_POST['FormEdit'])) {
+                                                            if (!empty($_POST['email']) && !empty($_POST['nom']) && !empty($_POST['prenom'])) {
+                                                                $email = htmlspecialchars($_POST['email']);
+                                                                $nom = htmlspecialchars($_POST['nom']);
+                                                                $prenom = htmlspecialchars($_POST['prenom']);
+                                                                $isAdmin = htmlspecialchars($_POST['isAdmin']);
+                                                                $typeCompte = htmlspecialchars($_POST['typeCompte']);
+
+                                                                $update = $bdd->prepare('UPDATE users SET nom = ?, prenom = ?, email = ?, isAdmin = ?, typeCompte = ? WHERE id = ?');
+                                                                $update->execute(array($nom, $prenom, $email, $isAdmin, $typeCompte, $user['id']));
+                                                                echo "<script>location.href = './d-g-users.php'</script>";
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <tr>
+                                                            <form method="post">
+                                                                <td>
+                                                                    <span style="color: #a813a8">
+                                                                        <?php echo $user['id']; ?>
+                                                                    </span>
+                                                                </td>
+                                                                <td><input class="form-control" type="text" id="nom" name="nom"
+                                                                        value="<?php echo $user['nom']; ?>" /></td>
+                                                                <td><input type="text" class="form-control" id="prenom"
+                                                                        name="prenom" value="<?php echo $user['prenom']; ?>" /></td>
+                                                                <td><input type="email" class="form-control" id="email" name="email"
+                                                                        value="<?php echo $user['email']; ?>" /></td>
+                                                                <td>
+                                                                    <select id="isAdmin" class="form-select" name="isAdmin">
+                                                                        <option value="1" <?php if ($user['isAdmin'] == 1) { ?>selected<?php } ?>>Yes</option>
+                                                                        <option value="0" <?php if ($user['isAdmin'] == 0) { ?>selected<?php } ?>>No</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select id="typeCompte" class="form-select" name="typeCompte">
+                                                                        <option value="1" <?php if ($user['typeCompte'] == 1) { ?>selected<?php } ?>>Agent Entretient</option>
+                                                                        <option value="0" <?php if ($user['typeCompte'] == 0) { ?>selected<?php } ?>>User</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td class="text-center">-</td>
+                                                                <td><button type="submit" name="FormEdit"
+                                                                        class="btn btn-icon btn-primary"> <span
+                                                                            class="tf-icons bx bx-check"></span></button></td>
+                                                            </form>
+                                                        </tr>
+                                                    <?php }
+                                                } ?>
+                                            <?php } ?>
+                                        </tbody>
                                     </table>
                                 </div>
+                            </div>
                         </div>
+                        <!-- Footer -->
+                        <footer class="content-footer footer bg-footer-theme">
+                            <div
+                                class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                                <div class="mb-2 mb-md-0">
+                                    ©
+                                    <script>
+                                        document.write(new Date().getFullYear());
+                                    </script>
+                                    , made with ❤️ by
+                                    <a href="https://themeselection.com" target="_blank"
+                                        class="footer-link fw-bolder">AFTERMATH</a>
+                                </div>
+                                <div>
+                                </div>
+                        </footer>
+                        <div class="content-backdrop fade"></div>
                     </div>
-                    <!-- Footer -->
-                    <footer class="content-footer footer bg-footer-theme">
-                        <div
-                            class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                            <div class="mb-2 mb-md-0">
-                                ©
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script>
-                                , made with ❤️ by
-                                <a href="https://themeselection.com" target="_blank"
-                                    class="footer-link fw-bolder">AFTERMATH</a>
-                            </div>
-                            <div>
-                            </div>
-                    </footer>
-                    <div class="content-backdrop fade"></div>
                 </div>
             </div>
+            <div class="layout-overlay layout-menu-toggle"></div>
         </div>
-        <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
 
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="../assets/vendor/js/menu.js"></script>
-    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/dashboards-analytics.js"></script>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="../assets/vendor/libs/popper/popper.js"></script>
+        <script src="../assets/vendor/js/bootstrap.js"></script>
+        <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="../assets/vendor/js/menu.js"></script>
+        <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/dashboards-analytics.js"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
